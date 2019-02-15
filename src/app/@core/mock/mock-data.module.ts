@@ -1,7 +1,7 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { UserService } from './users.service';
+import { UsersService } from './users.service';
 import { ElectricityService } from './electricity.service';
 import { SmartTableService } from './smart-table.service';
 import { UserActivityService } from './user-activity.service';
@@ -22,8 +22,12 @@ import { StatsProgressBarService } from './stats-progress-bar.service';
 import { VisitorsAnalyticsService } from './visitors-analytics.service';
 import { SecurityCamerasService } from './security-cameras.service';
 
+// sm
+import { UserService } from '../../common/api/user.service';
+
 const SERVICES = [
   UserService,
+  UsersService,
   ElectricityService,
   SmartTableService,
   UserActivityService,

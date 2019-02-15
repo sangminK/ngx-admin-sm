@@ -31,7 +31,7 @@ import { StatsProgressBarData } from './data/stats-progress-bar';
 import { VisitorsAnalyticsData } from './data/visitors-analytics';
 import { SecurityCamerasData } from './data/security-cameras';
 
-import { UserService } from './mock/users.service';
+import { UsersService } from './mock/users.service';
 import { ElectricityService } from './mock/electricity.service';
 import { SmartTableService } from './mock/smart-table.service';
 import { UserActivityService } from './mock/user-activity.service';
@@ -52,6 +52,9 @@ import { VisitorsAnalyticsService } from './mock/visitors-analytics.service';
 import { SecurityCamerasService } from './mock/security-cameras.service';
 import { MockDataModule } from './mock/mock-data.module';
 
+// sm 
+import { UserService } from '../common/api/user.service';
+
 const socialLinks = [
   {
     url: 'https://github.com/akveo/nebular',
@@ -71,7 +74,7 @@ const socialLinks = [
 ];
 
 const DATA_SERVICES = [
-  { provide: UserData, useClass: UserService },
+  { provide: UserData, useClass: UsersService, UserService },
   { provide: ElectricityData, useClass: ElectricityService },
   { provide: SmartTableData, useClass: SmartTableService },
   { provide: UserActivityData, useClass: UserActivityService },
