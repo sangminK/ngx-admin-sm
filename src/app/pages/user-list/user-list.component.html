@@ -116,6 +116,7 @@
 
 <table border="1">
   <tr>
+      <td>번호</td>
     <td>ID</td>
     <td>name</td>
     <td>salary</td>
@@ -124,7 +125,8 @@
     <td>정보수정일</td>
     <td>삭제</td>
   </tr>
-  <tr *ngFor="let user of users">
+  <tr *ngFor="let user of users; let i=index">
+      <td>{{ i+1 }}</td>
         <td>{{ user.id }}</td>
         <td>
           <a>{{user.name}}</a>
