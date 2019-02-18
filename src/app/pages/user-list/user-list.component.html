@@ -4,10 +4,10 @@
 <h4>* list paging</h4>
 <div class="list">
   <ul>
-    <li *ngFor="let item of collection | paginate: { itemsPerPage: 10, currentPage: p, id: 'list' }">{{ item }}</li>
+    <li *ngFor="let item of collection | paginate: { itemsPerPage: 10, currentPage: l, id: 'list' }">{{ item }}</li>
   </ul>
 
-  <pagination-controls (pageChange)="p = $event" id="list"></pagination-controls>
+  <pagination-controls (pageChange)="l = $event" id='list'></pagination-controls>
 </div>
 <br>
 
