@@ -6,6 +6,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ECommerceComponent } from './e-commerce/e-commerce.component';
 import { NotFoundComponent } from './miscellaneous/not-found/not-found.component';
 import { UserListComponent } from './user-list/user-list.component';
+import { OneComponent } from './one/one.component';
 
 const routes: Routes = [{
   path: '',
@@ -20,12 +21,23 @@ const routes: Routes = [{
       component: UserListComponent,
     },
 
+    {
+      path: 'one',
+      component: OneComponent
+    },
+
     // 서브 메뉴 있으면 #module 로 연결
     {
       path: 'sub-menu',
       loadChildren: './sub-menu/sub-menu.module#SubMenuModule',
       //link: '/pages/sub-menu/paging',
     },
+    {
+      path: 'multi-menu',
+      loadChildren: './multi-menu/multi-menu.module#MultiMenuModule',
+    },
+
+
     /////////////////////////////////////////////
 
     {

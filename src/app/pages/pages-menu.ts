@@ -26,6 +26,29 @@ export const MENU_ITEMS: NbMenuItem[] = [
       },
     ]
   },
+  {
+    title: 'One Component',
+    icon: 'nb-compose',
+    link: '/pages/one',
+  },
+  {
+    title: 'Multi menu',
+    icon: 'nb-gear',
+    children: [
+      {
+        title: '메뉴 테스트1',
+        link: '/pages/multi-menu/menu-test1',
+      },
+      {
+        title: '메뉴 테스트2',
+        link: '/pages/multi-menu/menu-test2',
+      },
+      {
+        title: '메뉴 테스트3',
+        link: '/pages/multi-menu/menu-test3',
+      }
+    ]
+  },
 
   // {
   //   title: 'Calendar',

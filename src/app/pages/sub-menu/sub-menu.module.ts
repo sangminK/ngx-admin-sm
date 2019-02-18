@@ -11,7 +11,8 @@ import { Menu2Component } from './menu2/menu2.component';
 
 const COMPONENTS = [
   SubMenuComponent,
-  PagingComponent
+  PagingComponent,
+  Menu2Component
 ];
 
 const SERVICES = [];
@@ -26,7 +27,6 @@ const MODULES = [
   ],
   declarations: [
     ...COMPONENTS,
-    Menu2Component,
   ],
   providers: [
     ...SERVICES,

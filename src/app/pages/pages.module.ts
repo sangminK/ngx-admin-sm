@@ -9,6 +9,7 @@ import { PagesRoutingModule } from './pages-routing.module';
 import { ThemeModule } from '../@theme/theme.module';
 import { MiscellaneousModule } from './miscellaneous/miscellaneous.module';
 import { UserListModule } from './user-list/user-list.module';
+import { OneModule } from './one/one.module';
 
 
 const PAGES_COMPONENTS = [
@@ -23,10 +24,11 @@ const PAGES_COMPONENTS = [
     ECommerceModule,
     MiscellaneousModule,
     UserListModule,
+    OneModule
   ],
   declarations: [
     ...PAGES_COMPONENTS,
-    
+       
   ],
 })
 export class PagesModule {
