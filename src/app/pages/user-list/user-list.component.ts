@@ -4,6 +4,12 @@ import { Router } from '@angular/router';
 import { User } from '../../@core/data/user';
 import { UserService } from '../../common/api/user.service';
 
+//
+import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
+import { ViewChild } from '@angular/core';
+import {map} from 'rxjs/operators';
+
+
 @Component({
   selector: 'ngx-user-list',
   templateUrl: './user-list.component.html',
@@ -11,16 +17,51 @@ import { UserService } from '../../common/api/user.service';
 })
 export class UserListComponent implements OnInit {
 
+  displayedColumns = ['id', 'name', 'salary', 'status'];
+  dataSource: MatTableDataSource<User>;
+
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
+
+  //displayedColumns = ['ID', 'name', 'salary', 'status'];
+  //dataSource;
+
+  //@ViewChild(MatPaginator) paginator: MatPaginator;
+
+
+
   users: User[];
+  users2: User[];
   user = new Object();   // server쪽 return값 User에서 Optional<User>로 수정
   // --> 바꾸고 나서 detail view 안보이는 것 해결
 
-  constructor(private userService: UserService, private router: Router) { }
+  //dataSource = new MatTableDataSource(this.getUsers2());
+  
+  collection = [];
+
+  constructor(private userService: UserService, private router: Router) { 
+
+    for (let i = 1; i <= 100; i++) {
+      this.collection.push(`item ${i}`);
+    }
+    //alert(this.collection.length)
+
+    //this.dataSource = new MatTableDataSource<User>(this.getUsers2());
+
+
+  }
 
   ngOnInit() {
     this.getUsers();
+    this.getUsers2();
     //this.getUser(19);
+    //this.dataSource.paginator = this.paginator;
   }
+
+  // ngAfterViewInit() {
+  //   this.dataSource.paginator = this.paginator;
+  //   this.dataSource.sort = this.sort;
+  // }
 
   getUser(id: number) {
     this.userService.getUser(id)
@@ -31,9 +72,35 @@ export class UserListComponent implements OnInit {
     return this.userService.getUsers()
       .subscribe(
         users => {
-          this.users = users
+          this.users = users;
         }
       );
+  }
+
+  // return json으로
+  getUsers2() {
+    return this.userService.getUsers()
+    //.pipe(map(res => res.json()))
+      .subscribe(
+        users => {
+           //this.users2 = users
+           
+           //this.dataSource = users
+           //return users;
+          //this.users2 = JSON.parse(users);
+          //this.dataSource.paginator = this.paginator;
+
+          this.dataSource= new MatTableDataSource(users);
+          this.dataSource.sort= this.sort;
+          this.dataSource.paginator=this.paginator;
+        }
+      );
+  }
+
+  applyFilter(filterValue: string) {
+    filterValue = filterValue.trim(); // Remove whitespace
+    filterValue = filterValue.toLowerCase(); // Datasource defaults to lowercase matches
+    this.dataSource.filter = filterValue;
   }
 
 
